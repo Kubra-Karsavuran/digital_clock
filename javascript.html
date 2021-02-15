@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript_practical</title>
+</head>
+<style type="text/css">
+	#body{
+		margin-top: 200px;
+	}
+	#div1{
+		width: 200px;
+		height: 200px;
+		background-color: white;
+        border-radius:50px;
+        margin-left: 400px;
+	}
+
+	#div2{
+		width: 200px;
+		height: 200px;
+		background-color: white;
+		margin-left: 10px;
+		border-radius:50px;
+	}
+
+	#div3{
+		width: 200px;
+		height: 200px;
+		background-color: white;
+		margin-left: 10px;
+		border-radius:50px;
+	}
+
+	#saat{
+		color: red;
+		text-align: center;
+		font-size: 150px;
+		margin-top: 0px;
+		margin-top: 10px;
+	}
+
+	#dakka{
+		color: red;
+		text-align: center;
+		font-size: 150px;
+		margin-top: 0px;
+		margin-top: 10px;
+	}
+
+	#saniye{
+		color: red;
+		text-align: center;
+		font-size: 150px;
+		margin-top: 0px;
+		margin-top: 10px;
+	}
+
+	#nokta1{
+		font-size: 70px;
+		padding-left: 10px;
+	}
+
+	#nokta2{
+		font-size: 70px;
+		padding-left: 10px;
+	}
+
+</style>
+
+<!-- style kodları -->
+
+<body id="body" >
+
+<div style="display: flex;" >
+
+<div id="div1" >
+	<h1 id="saat"></h1>
+</div>
+
+<h1 id="nokta1" >.</h1>
+
+<div id="div2" >
+	<h1 id="dakka" ></h1>
+</div>
+
+<h1 id="nokta2" >.</h1>
+
+<div id="div3" >
+	<h1 id="saniye" ></h1>
+</div>
+
+</div>
+
+</body>
+
+<!-- html kodları -->
+
+<script type="text/javascript">
+
+// background renk degıstırme fonksıyonu
+
+	var text;
+    function color_creat()
+    {
+    	var a="ABCDEF0123456789";
+    	text="#";
+    	for(var i=0;i<6;i++)
+    	{
+    		var random=Math.round(Math.random()*15);
+    		text += a.charAt(random);
+    	}
+    }
+	
+//saat dakka ve sanıye fonksıyonları
+
+	var tarih= new Date();
+	var saat, dakka, saniye;
+	saat=tarih.getHours();
+	dakka=tarih.getMinutes();
+	saniye=tarih.getSeconds(); 
+
+	setInterval(function()
+	{
+		color_creat();
+    	document.getElementById('body').style.backgroundColor=text;
+        document.getElementById('saat').innerHTML=saat;
+        document.getElementById('dakka').innerHTML=dakka;
+        document.getElementById('saniye').innerHTML=saniye++;
+
+        if (Number(document.getElementById('saniye').innerText)==59) {
+
+        	dakka++;
+        	saniye=0;
+        }
+        if (Number(document.getElementById('dakka').innerText)>59) {
+
+        	
+        	saat++;
+        	dakka=0;
+        }
+        if (Number(document.getElementById('saat').innerText)>23) {
+        	saat=0;
+        	dakka=0;
+        }
+
+	},1000);
+
+	
+
+</script>
+
+<!-- javascript kodları -->
+
+</html>
